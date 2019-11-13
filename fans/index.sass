@@ -1,0 +1,91 @@
+@import "../assets/css/_mixins"
+
+html
+  margin: 0
+  padding: 0
+
+body
+  position: relative
+  margin: 0
+  background-image: url('images/seigaiha.png')
+  //background: linear-gradient(rgba(216, 20, 0, 0.3), rgba(143, 107, 214, 0.3)), url('images/seigaiha.png')
+  background: linear-gradient(rgba(216, 20, 0, 0.3), rgba(255,152,45, 0.3)), url('images/seigaiha.png')
+
+  padding-top: 2em
+  text-align: center
+  font-family: 'Helvetica Neue', Helvetica, sans-serif
+
+.dice
+  margin: 0 auto
+  margin-bottom: 3em
+  +letterpress(0.3)
+
+.die
+  position: relative
+  font-size: 40pt
+  font-weight: bold
+
+  &.transition
+    font-size: 20pt
+
+    .die-content
+      padding: 0.5em
+      margin: 0.5em
+
+body[display-mode=full] .die
+  width: auto
+
+  &.relation
+    background: rgba(50,50,50,0.2)
+    img
+      height: 100px
+
+body[display-mode=minimal] .die, body[display-mode=pose] .die
+  position: relative
+  display: inline-block
+  height: 150px
+  width: 150px
+  margin: 20px
+  +border-radius(2px)
+  font-size: 40pt
+  font-weight: bold
+  background-color: rgba(70, 165, 185, 0.7)
+  //rgba(101, 65, 70, 0.7)
+
+  .die-content-wrapper
+    display: table
+    height: 100%
+    width: 100%
+
+    .die-content
+      display: table-cell
+      vertical-align: middle
+      text-align: center
+      overflow-wrap: break-word
+
+  &.transition
+    font-size: 18pt
+
+  &.relation
+    img
+      position: absolute
+      top: 50%
+      left: 50%
+      margin-left: -25%
+      height: 150px
+
+.button
+  +button
+  +transition(0.3s)
+  font-size: 30pt
+  width: 1em
+  background-color: #ae91c3
+  //#af8a1d
+  &:hover
+    +boxpress
+    +letterpress(0.3)
+    background-color: #82609a
+    //#714ca2
+
+.footer
+  margin: 1em 0

@@ -1,0 +1,97 @@
+<html ng-app="FansApp"
+      ng-controller="FansCtrl">
+<head>
+
+  <title>Random move sequence generator for fan tech</title>
+
+	<!-- Meta -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="keywords" content="fans,flow" />
+  <meta name="description" content="Fan spinning transition exercises" />
+  <meta property="og:title" content="Fan spinning transition exercises" />
+  <meta property="og:url" content="https://rfong.github.io/flow-games/fans/" />
+  <meta property="og:image" content="http://rfong.github.io/flow-games/assets/images/fans_screenshot.png" />
+  <meta property="og:description" content="Randomly generated transition exercises for fan spinners" />
+  <meta name="twitter:title" content="Fan spinning transition exercises" />
+  <meta name="twitter:description" content="Randomly generated transition exercises for fan spinners" />
+  <meta name="twitter:image" content="http://rfong.github.io/flow-games/assets/images/fans_screenshot.png" />
+
+	<!-- Vendor styling -->
+  <link rel="stylesheet" href="../assets/lib/font-awesome/css/font-awesome.min.css" />
+
+	<!-- Page styling -->
+  <link rel="stylesheet" href="index.css" />
+
+	<!-- Vendor scripts -->
+  <script src="../assets/lib/ga.js"></script>
+  <script src="../assets/lib/underscore.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+  <script src="../assets/lib/jquery-deparam.js"></script>
+  <script src="../assets/lib/angular.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+	<!-- Page scripts -->
+  <script src="../assets/js/urlparams.js"></script>
+  <script src="index.js"></script>
+
+</head>
+<body display-mode="{{displayMode}}">
+
+  <div class="dice">
+    <div ng-repeat="die in dice"
+         class="die {{die.type}}">
+      <div class="die-content-wrapper">
+      <div class="die-content">
+        <div ng-if="die.type==='transition'">
+          <i class="fa fa-arrow-right"></i>
+        </div>
+        {{die.content}}
+        <div ng-if="die.type==='transition'">
+          <i class="fa fa-arrow-right"></i>
+        </div>
+      </div>
+      </div>
+      <div class="die-image"
+           ng-if="die.type==='relation' && displayMode!=='minimal'">
+        <img src="{{getImageUrl(die)}}"/>
+      </div>
+    </div>
+  </div>
+
+  <div class="button" ng-click="shuffle()">
+    <i class="fa fa-refresh"></i>
+  </div>
+
+  <div class="footer">
+    display:
+    <span ng-repeat="mode in DISPLAY_MODES">
+        <a ng-if="mode != displayMode" href="" ng-click="changeMode(mode)">{{mode}}</a>
+        <b ng-if="mode == displayMode">{{mode}}</b>
+        <span ng-if="!$last">|</span>
+    </span>
+    <br/>
+    combos:
+    <span ng-if="numTransitions == 1">
+        <b>less</b> |
+        <a href="" ng-click="changeNumTransitions(2)">more</a>
+    </span>
+    <span ng-if="numTransitions == 2">
+        <a href="" ng-click="changeNumTransitions(1)">less</a> |
+        <b>more</b>
+    </span>
+  </div>
+
+  <div class="footer">
+    <p>
+    site by <a href="http://rfong.github.io">rfong</a>
+    /
+    <a href="https://www.facebook.com/groups/109637431191/permalink/10154145560006192/">fan dice game</a> by Becca Becker
+    /
+    <a href="https://www.facebook.com/groups/109637431191/permalink/10154930811256192/">diagrams</a> by Robin McPlurry
+    </p>
+
+    <p><a href="{{baseURL}}/about">what's this?</a></p>
+  </div>
+
+</body>
+</html>

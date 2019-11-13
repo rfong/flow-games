@@ -1,0 +1,103 @@
+$green: #57bf43
+//$green-lite: #d5edd1
+$green-lite: #b2d5ab
+$red: #e62e00
+$red-dark: #803636
+$red-lite: #ec957f
+
+
+=button
+  cursor: pointer
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif
+  text-decoration: none
+  letter-spacing: 2px
+  text-shadow: none
+
+  display: inline-block
+  vertical-align: middle
+  padding: 0.5em 20px
+  margin: 0.5em 0
+
+  +transition(background-color 0.2s)
+  +border-radius(5px)
+
+  outline: none
+  border-style: none
+
+=box-shadow($color, $blur, $spread:0, $x:0, $y:0)
+  -moz-box-shadow:    $color $x $y $blur $spread
+  -webkit-box-shadow: $color $x $y $blur $spread
+  -o-box-shadow:      $color $x $y $blur $spread
+  box-shadow:         $color $x $y $blur $spread
+
+=inset-box-shadow($color, $blur, $spread:0, $x:0, $y:0)
+  -moz-box-shadow:    inset $color $x $y $blur $spread
+  -webkit-box-shadow: inset $color $x $y $blur $spread
+  -o-box-shadow:      inset $color $x $y $blur $spread
+  box-shadow:         inset $color $x $y $blur $spread
+
+=letterpress($opacity:0.8)
+  text-shadow: 1px 1px rgba(255,255,255,$opacity)
+=boxpress
+  +inset-box-shadow(rgba(0,0,0,0.3), 1px, 0, 1px, 1px)
+
+=text-glow($color:#fff, $blur:3px)
+  text-shadow: 0 0 $blur $color
+
+=border-radius($r)
+  -webkit-border-radius: $r
+  -moz-border-radius: $r
+  -ms-border-radius: $r
+  -o-border-radius: $r
+  border-radius: $r
+
+=text-bg($url)
+  background: url($url)
+  background-clip: text
+  -webkit-background-clip: text
+  -moz-background-clip: text
+  text-fill-color: transparent
+  -webkit-text-fill-color: transparent
+  -moz-text-fill-color: transparent
+
+=un-text-bg($color)
+  background: none
+  background-clip: none
+  -webkit-background-clip: none
+  -moz-background-clip: none
+  text-fill-color: $color
+  -webkit-text-fill-color: $color
+  -moz-text-fill-color: $color
+  color: $color
+
+=border-box
+  box-sizing: border-box
+  -ms-box-sizing: border-box
+  -webkit-box-sizing: border-box
+  -moz-box-sizing: border-box
+
+=transition($prop:0.2s)
+  -moz-transition: #{$prop}
+  -ms-transition: #{$prop}
+  -webkit-transition: #{$prop}
+  -o-transition: #{$prop}
+  transition: #{$prop}
+
+// flips colors on hover
+=invertible-color($text-color, $bg-color)
+  color: $text-color
+  background-color: $bg-color
+  &:hover
+    color: $bg-color
+    background-color: $text-color
+
+=unselectable
+  -webkit-user-select: none
+  -moz-user-select: none
+  -ms-user-select: none
+  -o-user-select: none
+  user-select: none
+
+=no-underline
+  &:hover, &:active
+    text-decoration: none

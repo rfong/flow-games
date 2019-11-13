@@ -1,0 +1,109 @@
+html {
+  margin: 0;
+  padding: 0; }
+
+body {
+  position: relative;
+  margin: 0;
+  background-image: url("images/seigaiha.png");
+  background: linear-gradient(rgba(216, 20, 0, 0.3), rgba(255, 152, 45, 0.3)), url("images/seigaiha.png");
+  padding-top: 2em;
+  text-align: center;
+  font-family: "Helvetica Neue", Helvetica, sans-serif; }
+
+.dice {
+  margin: 0 auto;
+  margin-bottom: 3em;
+  text-shadow: 1px 1px rgba(255, 255, 255, 0.3); }
+
+.die {
+  position: relative;
+  font-size: 40pt;
+  font-weight: bold; }
+  .die.transition {
+    font-size: 20pt; }
+    .die.transition .die-content {
+      padding: 0.5em;
+      margin: 0.5em; }
+
+body[display-mode=full] .die {
+  width: auto; }
+  body[display-mode=full] .die.relation {
+    background: rgba(50, 50, 50, 0.2); }
+    body[display-mode=full] .die.relation img {
+      height: 100px; }
+
+body[display-mode=minimal] .die, body[display-mode=pose] .die {
+  position: relative;
+  display: inline-block;
+  height: 150px;
+  width: 150px;
+  margin: 20px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  -o-border-radius: 2px;
+  border-radius: 2px;
+  font-size: 40pt;
+  font-weight: bold;
+  background-color: rgba(70, 165, 185, 0.7); }
+  body[display-mode=minimal] .die .die-content-wrapper, body[display-mode=pose] .die .die-content-wrapper {
+    display: table;
+    height: 100%;
+    width: 100%; }
+    body[display-mode=minimal] .die .die-content-wrapper .die-content, body[display-mode=pose] .die .die-content-wrapper .die-content {
+      display: table-cell;
+      vertical-align: middle;
+      text-align: center;
+      overflow-wrap: break-word; }
+  body[display-mode=minimal] .die.transition, body[display-mode=pose] .die.transition {
+    font-size: 18pt; }
+  body[display-mode=minimal] .die.relation img, body[display-mode=pose] .die.relation img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -25%;
+    height: 150px; }
+
+.button {
+  cursor: pointer;
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  letter-spacing: 2px;
+  text-shadow: none;
+  display: inline-block;
+  vertical-align: middle;
+  padding: 0.5em 20px;
+  margin: 0.5em 0;
+  -moz-transition: background-color 0.2s;
+  -ms-transition: background-color 0.2s;
+  -webkit-transition: background-color 0.2s;
+  -o-transition: background-color 0.2s;
+  transition: background-color 0.2s;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+  outline: none;
+  border-style: none;
+  -moz-transition: 0.3s;
+  -ms-transition: 0.3s;
+  -webkit-transition: 0.3s;
+  -o-transition: 0.3s;
+  transition: 0.3s;
+  font-size: 30pt;
+  width: 1em;
+  background-color: #ae91c3; }
+  .button:hover {
+    -moz-box-shadow: inset rgba(0, 0, 0, 0.3) 1px 1px 1px 0;
+    -webkit-box-shadow: inset rgba(0, 0, 0, 0.3) 1px 1px 1px 0;
+    -o-box-shadow: inset rgba(0, 0, 0, 0.3) 1px 1px 1px 0;
+    box-shadow: inset rgba(0, 0, 0, 0.3) 1px 1px 1px 0;
+    text-shadow: 1px 1px rgba(255, 255, 255, 0.3);
+    background-color: #82609a; }
+
+.footer {
+  margin: 1em 0; }
+
+/*# sourceMappingURL=index.css.map */

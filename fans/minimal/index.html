@@ -1,0 +1,60 @@
+<html ng-app="FansApp"
+      ng-controller="FansCtrl">
+<head>
+
+  <title>Dice game for fan tech</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="../index.css" />
+  <link rel="stylesheet" href="../lib/font-awesome/css/font-awesome.min.css" />
+
+  <script src="../lib/underscore.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+  <script src="../lib/jquery-deparam.js"></script>
+  <script src="../lib/angular.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+  <script src="../urlparams.js"></script>
+  <script src="../index.js"></script>
+
+</head>
+<body display-mode="minimal">
+
+  <div class="dice">
+    <div ng-repeat="die in dice"
+          class="die {{die.type}}">
+      <div class="die-content-wrapper">
+        <div class="die-content">
+          <div ng-if="die.type=='transition'">
+            <i class="fa fa-arrow-right"></i>
+          </div>
+          {{die.content}}
+          <div ng-if="die.type=='transition'">
+            <i class="fa fa-arrow-right"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="button" ng-click="shuffle()">
+    <i class="fa fa-refresh"></i>
+  </div>
+
+  <div class="footer">
+    display modes:
+    <a href="{{baseURL}}">pose</a> |
+    <a href="{{baseURL}}/full">full</a> |
+    <b>minimal</b>
+  </div>
+
+  <div class="footer">
+    site by <a href="http://rfong.github.io">rfong</a>
+    /
+    <a href="https://www.facebook.com/groups/109637431191/permalink/10154145560006192/">fan dice game</a> by <a href="https://www.etsy.com/shop/ForgedCreations">Becca Becker</a>
+    /
+    diagrams by <a href="https://www.facebook.com/groups/109637431191/permalink/10154930811256192/">Robin McPlurry</a>
+  </div>
+
+</body>
+</html>
