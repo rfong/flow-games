@@ -15,7 +15,7 @@ var all_body_parts = _.uniq(_.flatten(_.values(move_types)));
 // flair : whitelisted body parts, or null if all
 var flair_options = {
 	'pirouette': null,
-	'over the head': ['elbow'],
+	'over the head': ['elbow', 'mouth'],
 	'behind the back': ['elbow', 'hand', 'wrist', 'neck'],
 	'level change': null,
 	'gesture': null,
