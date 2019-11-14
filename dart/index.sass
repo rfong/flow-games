@@ -1,0 +1,34 @@
+@import "../assets/css/_mixins"
+
+html
+  margin: 0
+  padding: 0
+  line-height: 1.5em
+
+body
+  position: relative
+  margin: 0
+  background-image: url('images/herringbone.png')
+  //background: linear-gradient(rgba(216, 20, 0, 0.3), rgba(143, 107, 214, 0.3)), url('images/herringbone.png')
+  background: linear-gradient(rgba(216, 20, 0, 0.3), rgba(255,152,45, 0.3)), url('images/herringbone.png')
+
+  padding-top: 2em
+  text-align: center
+  font-family: 'Helvetica Neue', Helvetica, sans-serif
+
+.button
+  +button
+  +transition(0.3s)
+  font-size: 30pt
+  width: 1em
+  //background-color: #ae91c3
+  background-color: rgba(255,255,255,0.7)
+  //#af8a1d
+  &:hover
+    +boxpress
+    +letterpress(0.3)
+    background-color: rgba(255,255,255,0.55)
+    //#714ca2
+
+.footer
+  margin: 1em 0

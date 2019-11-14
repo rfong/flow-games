@@ -1,0 +1,56 @@
+html {
+  margin: 0;
+  padding: 0;
+  line-height: 1.5em; }
+
+body {
+  position: relative;
+  margin: 0;
+  background-image: url("images/herringbone.png");
+  background: linear-gradient(rgba(216, 20, 0, 0.3), rgba(255, 152, 45, 0.3)), url("images/herringbone.png");
+  padding-top: 2em;
+  text-align: center;
+  font-family: "Helvetica Neue", Helvetica, sans-serif; }
+
+.button {
+  cursor: pointer;
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  letter-spacing: 2px;
+  text-shadow: none;
+  display: inline-block;
+  vertical-align: middle;
+  padding: 0.5em 20px;
+  margin: 0.5em 0;
+  -moz-transition: background-color 0.2s;
+  -ms-transition: background-color 0.2s;
+  -webkit-transition: background-color 0.2s;
+  -o-transition: background-color 0.2s;
+  transition: background-color 0.2s;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+  outline: none;
+  border-style: none;
+  -moz-transition: 0.3s;
+  -ms-transition: 0.3s;
+  -webkit-transition: 0.3s;
+  -o-transition: 0.3s;
+  transition: 0.3s;
+  font-size: 30pt;
+  width: 1em;
+  background-color: rgba(255, 255, 255, 0.7); }
+  .button:hover {
+    -moz-box-shadow: inset rgba(0, 0, 0, 0.3) 1px 1px 1px 0;
+    -webkit-box-shadow: inset rgba(0, 0, 0, 0.3) 1px 1px 1px 0;
+    -o-box-shadow: inset rgba(0, 0, 0, 0.3) 1px 1px 1px 0;
+    box-shadow: inset rgba(0, 0, 0, 0.3) 1px 1px 1px 0;
+    text-shadow: 1px 1px rgba(255, 255, 255, 0.3);
+    background-color: rgba(255, 255, 255, 0.55); }
+
+.footer {
+  margin: 1em 0; }
+
+/*# sourceMappingURL=index.css.map */

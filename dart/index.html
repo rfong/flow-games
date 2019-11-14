@@ -1,0 +1,65 @@
+<html ng-app="DartApp"
+      ng-controller="DartCtrl">
+<head>
+
+  <title>Random move sequence generator for rope dart</title>
+
+	<!-- Meta -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="keywords" content="fans,flow" />
+  <meta name="description" content="Rope dart transition exercises" />
+  <meta property="og:title" content="Rope dart transition exercises" />
+  <meta property="og:url" content="https://rfong.github.io/flow-games/dart/" />
+  <!--<meta property="og:image" content="http://rfong.github.io/flow-games/assets/images/fans_screenshot.png" />-->
+  <meta property="og:description" content="Randomly generated transition exercises for rope dart" />
+  <meta name="twitter:title" content="Rope dart transition exercises" />
+  <meta name="twitter:description" content="Randomly generated transition exercises for rope dart" />
+  <!--<meta name="twitter:image" content="http://rfong.github.io/flow-games/assets/images/fans_screenshot.png" />-->
+
+	<!-- Vendor styling -->
+  <link rel="stylesheet" href="../assets/lib/font-awesome/css/font-awesome.min.css" />
+
+	<!-- Page styling -->
+  <link rel="stylesheet" href="index.css" />
+
+	<!-- Vendor scripts -->
+  <script src="../assets/lib/ga.js"></script>
+  <script src="../assets/lib/underscore.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+  <script src="../assets/lib/jquery-deparam.js"></script>
+  <script src="../assets/lib/angular.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+	<!-- Page scripts -->
+  <script src="../assets/js/urlparams.js"></script>
+  <script src="index.js"></script>
+
+</head>
+<body display-mode="{{displayMode}}">
+
+  <h3>Rope dart sequence prompts</h3>
+
+  <div class="prompts">
+    <div ng-repeat="prompt_set in prompts">
+      <div ng-repeat="prompt in prompt_set">
+        {{prompt}}
+      </div>
+      <br/>
+    </div>
+  </div>
+
+  <div class="button" ng-click="morePrompts()">
+    <i class="fa fa-plus"></i>
+  </div>
+  <div class="button" ng-click="clearPrompts()">
+    <i class="fa fa-refresh"></i>
+  </div>
+
+  <div id="footer" class="footer">
+    <p>
+    site by <a href="http://rfong.github.io">rfong</a>
+    </p>
+  </div>
+
+</body>
+</html>
