@@ -3,13 +3,12 @@ var app = angular.module('FansApp', []);
 
 app.controller('FansCtrl', function($scope, $http) {
 
+	/* Configuration */
   $scope.baseURL = '/flow-games/fans';  // ultrajanky gh-pages hack
-  
-  $scope.dice = [];
   $scope.DISPLAY_MODES = ['pose', 'minimal'];
   $scope.displayMode = $scope.DISPLAY_MODES[0];
   $scope.numTransitions = 2;
-  $scope.DICE_PARAMETERS = {
+  $scope.CARDS_PARAMETERS = {
     // all must be unique
     relation: ['C', 'I', 'O', 'S', 'W', 'X'],
     transition: ['isolation', 'spin / antispin', 'tracer', 'slide', 'glide',
@@ -17,7 +16,9 @@ app.controller('FansCtrl', function($scope, $http) {
     num_poses: {C: 6, I: 4, O: 5, S: 6, W: 6, X: 6},
   };
 
-  $scope.getDiceTypes = function() {
+  $scope.cards = [];
+
+  $scope.getCardsTypeSequence = function() {
     // alternate relations and transitions
     return _.reduce(
       _.map(_.range($scope.numTransitions), function(t) {
@@ -25,17 +26,17 @@ app.controller('FansCtrl', function($scope, $http) {
       function(a, b) { return a.concat(b); }, []).concat('relation')
   }
 
-  $scope.getDieType = function(die_name) {
-    for (var die_type in $scope.DICE_PARAMETERS)
-      if (_.contains($scope.DICE_PARAMETERS[die_type], die_name))
-        return die_type;
+  $scope.getCardType = function(card_name) {
+    for (var card_type in $scope.CARDS_PARAMETERS)
+      if (_.contains($scope.CARDS_PARAMETERS[card_type], card_name))
+        return card_type;
   };
 
   $scope.changeNumTransitions = function(n) {
     var prevN = $scope.numTransitions;
     $scope.numTransitions = n;
     if (n < prevN) {
-        $scope.dice = $scope.dice.slice(0, 2*n+1);
+        $scope.cards = $scope.cards.slice(0, 2*n+1);
     } else {
         $scope.shuffle();
     }
@@ -53,50 +54,52 @@ app.controller('FansCtrl', function($scope, $http) {
   };
 
   $scope.randomVariant = function(relation) {
-    return _.random(1, $scope.DICE_PARAMETERS.num_poses[relation]);
+    return _.random(1, $scope.CARDS_PARAMETERS.num_poses[relation]);
   };
 
-  $scope.shuffle = function(diceTypes) {
-    diceTypes = diceTypes || $scope.getDiceTypes();
-    $scope.dice = _.map(diceTypes, function(dtype) {
+	// Randomly generate a new set of cards.
+  $scope.shuffle = function(cardsTypes) {
+    cardsTypes = cardsTypes || $scope.getCardsTypeSequence();
+    $scope.cards = _.map(cardsTypes, function(dtype) {
       var params = {
         type: dtype,
-        content: _.sample($scope.DICE_PARAMETERS[dtype]),
+        content: _.sample($scope.CARDS_PARAMETERS[dtype]),
       };
       params.variant = $scope.randomVariant(params.content);
       return params;
     });
-    console.log("shuffled;", _.pluck($scope.dice, 'content'));
+    console.log("shuffled;", _.pluck($scope.cards, 'content'));
     $scope.updateUrlParams();
   };
 
-  $scope.getImageUrl = function(die) {
-    var relation = die.content;
-    if (! _.contains($scope.DICE_PARAMETERS.relation, relation))
+  $scope.getImageUrl = function(card) {
+    var relation = card.content;
+    if (! _.contains($scope.CARDS_PARAMETERS.relation, relation))
       return null;
-    if ($scope.displayMode == 'pose' && die.variant !== undefined) {
-      return ($scope.baseURL + '/images/relation_' + relation + die.variant.toString() + '.png');
+    if ($scope.displayMode == 'pose' && card.variant !== undefined) {
+      return ($scope.baseURL + '/images/relation_' + relation + card.variant.toString() + '.png');
     }
     return $scope.baseURL + '/images/relation_' + relation+ '.png';
   };
 
+  // Dump config to url params
   $scope.updateUrlParams = function() {
-    // Dump config to url params
-    var dice_names = _.map($scope.dice, function(die) {
-      if (die.variant !== undefined) {
-        return die.content + ':' + die.variant.toString();
+    var cards_names = _.map($scope.cards, function(card) {
+      if (card.variant !== undefined) {
+        return card.content + ':' + card.variant.toString();
       }
-      return die.content;
+      return card.content;
     });
     window.urlparams.setUrlParams({
         mode: $scope.displayMode,
         transitions: $scope.numTransitions,
-        dice: dice_names.join(',')
+        cards: cards_names.join(',')
     });
   };
 
+	// Load configuration from permalink.
+	// If invalid, randomly generate new cards.
   $scope.initialize = function() {
-    // Load configuration from permalink, or shuffle if DNE
     try {
       var params = window.urlparams.getUrlParams();
       $scope.displayMode = params.mode || $scope.DISPLAY_MODES[0];
@@ -105,21 +108,21 @@ app.controller('FansCtrl', function($scope, $http) {
       $scope.shuffle();
       return;
     }
-    if (params.dice) {
-      console.log("load", params.dice);
-      $scope.dice = _.map(params.dice.split(','), function(die_name) {
-        if (_.contains(die_name, ':')) {
-          die_name = die_name.split(':');
+    if (params.cards) {
+      console.log("load", params.cards);
+      $scope.cards = _.map(params.cards.split(','), function(card_name) {
+        if (_.contains(card_name, ':')) {
+          card_name = card_name.split(':');
           return {
-            type: $scope.getDieType(die_name[0]),
-            content: die_name[0],
-            variant: die_name[1],
+            type: $scope.getCardType(card_name[0]),
+            content: card_name[0],
+            variant: card_name[1],
           };
         }
         return {
-          type: $scope.getDieType(die_name),
-          content: die_name,
-          variant: $scope.randomVariant(die_name),
+          type: $scope.getCardType(card_name),
+          content: card_name,
+          variant: $scope.randomVariant(card_name),
         };
       });
       $scope.updateUrlParams();

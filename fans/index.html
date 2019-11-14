@@ -2,7 +2,7 @@
       ng-controller="FansCtrl">
 <head>
 
-  <title>Random move sequence generator for fan tech</title>
+  <title>Random move sequence generator for fan spinning</title>
 
 	<!-- Meta -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,9 +11,9 @@
   <meta property="og:title" content="Fan spinning transition exercises" />
   <meta property="og:url" content="https://rfong.github.io/flow-games/fans/" />
   <meta property="og:image" content="http://rfong.github.io/flow-games/assets/images/fans_screenshot.png" />
-  <meta property="og:description" content="Randomly generated transition exercises for fan spinners" />
+  <meta property="og:description" content="Randomly generated transition exercises for fan spinning" />
   <meta name="twitter:title" content="Fan spinning transition exercises" />
-  <meta name="twitter:description" content="Randomly generated transition exercises for fan spinners" />
+  <meta name="twitter:description" content="Randomly generated transition exercises for fan spinning" />
   <meta name="twitter:image" content="http://rfong.github.io/flow-games/assets/images/fans_screenshot.png" />
 
 	<!-- Vendor styling -->
@@ -37,23 +37,25 @@
 </head>
 <body display-mode="{{displayMode}}">
 
-  <div class="dice">
-    <div ng-repeat="die in dice"
-         class="die {{die.type}}">
-      <div class="die-content-wrapper">
-      <div class="die-content">
-        <div ng-if="die.type==='transition'">
+	<h3>Random move generator for fans</h3>
+
+  <div class="cards">
+    <div ng-repeat="card in cards"
+         class="card {{card.type}}">
+      <div class="card-content-wrapper">
+      <div class="card-content">
+        <div ng-if="card.type==='transition'">
           <i class="fa fa-arrow-right"></i>
         </div>
-        {{die.content}}
-        <div ng-if="die.type==='transition'">
+        {{card.content}}
+        <div ng-if="card.type==='transition'">
           <i class="fa fa-arrow-right"></i>
         </div>
       </div>
       </div>
-      <div class="die-image"
-           ng-if="die.type==='relation' && displayMode!=='minimal'">
-        <img src="{{getImageUrl(die)}}"/>
+      <div class="card-image"
+           ng-if="card.type==='relation' && displayMode!=='minimal'">
+        <img src="{{getImageUrl(card)}}"/>
       </div>
     </div>
   </div>
@@ -63,13 +65,14 @@
   </div>
 
   <div class="footer">
-    display:
-    <span ng-repeat="mode in DISPLAY_MODES">
-        <a ng-if="mode != displayMode" href="" ng-click="changeMode(mode)">{{mode}}</a>
-        <b ng-if="mode == displayMode">{{mode}}</b>
-        <span ng-if="!$last">|</span>
-    </span>
-    <br/>
+    <div ng-if="DISPLAY_MODES">
+        display:
+        <span ng-repeat="mode in DISPLAY_MODES">
+            <a ng-if="mode != displayMode" href="" ng-click="changeMode(mode)">{{mode}}</a>
+            <b ng-if="mode == displayMode">{{mode}}</b>
+            <span ng-if="!$last">|</span>
+        </span>
+    </div>
     combos:
     <span ng-if="numTransitions == 1">
         <b>less</b> |
@@ -84,7 +87,7 @@
   <div class="footer">
     <p>
     site by <a href="http://rfong.github.io">rfong</a>
-    /
+		/
     <a href="https://www.facebook.com/groups/109637431191/permalink/10154145560006192/">fan dice game</a> by Becca Becker
     /
     <a href="https://www.facebook.com/groups/109637431191/permalink/10154930811256192/">diagrams</a> by Robin McPlurry

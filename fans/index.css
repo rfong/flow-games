@@ -11,29 +11,29 @@ body {
   text-align: center;
   font-family: "Helvetica Neue", Helvetica, sans-serif; }
 
-.dice {
+.cards {
   margin: 0 auto;
   margin-bottom: 3em;
   text-shadow: 1px 1px rgba(255, 255, 255, 0.3); }
 
-.die {
+.card {
   position: relative;
   font-size: 40pt;
   font-weight: bold; }
-  .die.transition {
+  .card.transition {
     font-size: 20pt; }
-    .die.transition .die-content {
+    .card.transition .card-content {
       padding: 0.5em;
       margin: 0.5em; }
 
-body[display-mode=full] .die {
+body[display-mode=full] .card {
   width: auto; }
-  body[display-mode=full] .die.relation {
+  body[display-mode=full] .card.relation {
     background: rgba(50, 50, 50, 0.2); }
-    body[display-mode=full] .die.relation img {
+    body[display-mode=full] .card.relation img {
       height: 100px; }
 
-body[display-mode=minimal] .die, body[display-mode=pose] .die {
+body[display-mode=minimal] .card, body[display-mode=pose] .card {
   position: relative;
   display: inline-block;
   height: 150px;
@@ -47,18 +47,18 @@ body[display-mode=minimal] .die, body[display-mode=pose] .die {
   font-size: 40pt;
   font-weight: bold;
   background-color: rgba(70, 165, 185, 0.7); }
-  body[display-mode=minimal] .die .die-content-wrapper, body[display-mode=pose] .die .die-content-wrapper {
+  body[display-mode=minimal] .card .card-content-wrapper, body[display-mode=pose] .card .card-content-wrapper {
     display: table;
     height: 100%;
     width: 100%; }
-    body[display-mode=minimal] .die .die-content-wrapper .die-content, body[display-mode=pose] .die .die-content-wrapper .die-content {
+    body[display-mode=minimal] .card .card-content-wrapper .card-content, body[display-mode=pose] .card .card-content-wrapper .card-content {
       display: table-cell;
       vertical-align: middle;
       text-align: center;
       overflow-wrap: break-word; }
-  body[display-mode=minimal] .die.transition, body[display-mode=pose] .die.transition {
+  body[display-mode=minimal] .card.transition, body[display-mode=pose] .card.transition {
     font-size: 18pt; }
-  body[display-mode=minimal] .die.relation img, body[display-mode=pose] .die.relation img {
+  body[display-mode=minimal] .card.relation img, body[display-mode=pose] .card.relation img {
     position: absolute;
     top: 50%;
     left: 50%;

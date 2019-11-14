@@ -15,12 +15,12 @@ body
   text-align: center
   font-family: 'Helvetica Neue', Helvetica, sans-serif
 
-.dice
+.cards
   margin: 0 auto
   margin-bottom: 3em
   +letterpress(0.3)
 
-.die
+.card
   position: relative
   font-size: 40pt
   font-weight: bold
@@ -28,11 +28,11 @@ body
   &.transition
     font-size: 20pt
 
-    .die-content
+    .card-content
       padding: 0.5em
       margin: 0.5em
 
-body[display-mode=full] .die
+body[display-mode=full] .card
   width: auto
 
   &.relation
@@ -40,7 +40,7 @@ body[display-mode=full] .die
     img
       height: 100px
 
-body[display-mode=minimal] .die, body[display-mode=pose] .die
+body[display-mode=minimal] .card, body[display-mode=pose] .card
   position: relative
   display: inline-block
   height: 150px
@@ -52,12 +52,12 @@ body[display-mode=minimal] .die, body[display-mode=pose] .die
   background-color: rgba(70, 165, 185, 0.7)
   //rgba(101, 65, 70, 0.7)
 
-  .die-content-wrapper
+  .card-content-wrapper
     display: table
     height: 100%
     width: 100%
 
-    .die-content
+    .card-content
       display: table-cell
       vertical-align: middle
       text-align: center
