@@ -22,6 +22,7 @@ var flair_options = {
 	'jump': null,
 	'groundwork': null,
 	'plane change': null,
+	'roll': null,
 };
 
 function capitalizeFirstLetter(s) {
