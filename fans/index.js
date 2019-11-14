@@ -3,7 +3,7 @@ var app = angular.module('FansApp', []);
 
 app.controller('FansCtrl', function($scope, $http) {
 
-	/* Configuration */
+  /* Configuration */
   $scope.baseURL = '/flow-games/fans';  // ultrajanky gh-pages hack
   $scope.DISPLAY_MODES = ['pose', 'minimal'];
   $scope.displayMode = $scope.DISPLAY_MODES[0];
@@ -57,7 +57,7 @@ app.controller('FansCtrl', function($scope, $http) {
     return _.random(1, $scope.CARDS_PARAMETERS.num_poses[relation]);
   };
 
-	// Randomly generate a new set of cards.
+  // Randomly generate a new set of cards.
   $scope.shuffle = function(cardsTypes) {
     cardsTypes = cardsTypes || $scope.getCardsTypeSequence();
     $scope.cards = _.map(cardsTypes, function(dtype) {
@@ -97,8 +97,8 @@ app.controller('FansCtrl', function($scope, $http) {
     });
   };
 
-	// Load configuration from permalink.
-	// If invalid, randomly generate new cards.
+  // Load configuration from permalink.
+  // If invalid, randomly generate new cards.
   $scope.initialize = function() {
     try {
       var params = window.urlparams.getUrlParams();
